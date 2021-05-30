@@ -1,0 +1,16 @@
+.userItem {
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid grey;
+  border-radius: 3px;
+  display: flex;
+}
+
+.avatar {
+  width: 70px;
+}
+
+.info {
+  margin-left: 20px;
+  text-align: left;
+}

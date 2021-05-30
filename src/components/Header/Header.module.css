@@ -1,0 +1,30 @@
+.header {
+  padding: 10px;
+  border: 1px solid grey;
+  border-radius: 3px;
+  grid-column: 1 / 3;
+  grid-row: 1;
+}
+
+.logo {
+  float: left;
+}
+
+.logoImg {
+  width: 70px;
+}
+
+.loginBlock {
+  float: right;
+}
+
+.btn {
+  all: inherit;
+  color: blue;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.btn:active {
+  color: red;
+}

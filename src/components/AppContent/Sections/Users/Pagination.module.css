@@ -1,0 +1,11 @@
+.pagination {
+  margin-bottom: 5px;
+}
+
+.page {
+  margin: 5px;
+}
+
+.currentPage {
+  font-weight: bold;
+}

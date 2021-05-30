@@ -1,0 +1,16 @@
+.profile {
+  display: flex;
+}
+
+.info {
+  flex-grow: 1;
+  margin-left: 10px;
+}
+
+.fullName h2 {
+  margin: 0;
+}
+
+.avatarImg {
+  width: 150px;
+}

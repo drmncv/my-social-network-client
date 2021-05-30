@@ -1,0 +1,7 @@
+.appContent {
+  padding: 10px;
+  border: 1px solid grey;
+  border-radius: 3px;
+  grid-column: 2;
+  grid-row: 2;
+}
