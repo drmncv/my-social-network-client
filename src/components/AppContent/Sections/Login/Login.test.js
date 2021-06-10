@@ -4,7 +4,7 @@ import Login from "./Login";
 
 const loginMock = jest.fn(() => Promise.resolve(""));
 
-render(<Login isAuth={false} login={loginMock} />);
+render(<Login authorizedUserId={1} isAuth={false} login={loginMock} />);
 
 test("Collects login data from the form and passes it to login callback", () => {
   fireEvent.change(screen.getByLabelText(/email/i), {

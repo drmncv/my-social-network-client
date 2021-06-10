@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 
 class ProfileStatus extends React.Component {
   constructor(props) {
@@ -24,6 +25,13 @@ class ProfileStatus extends React.Component {
   };
 
   render() {
+    if (!this.props.isProfileOwner) {
+      return (
+        <div>
+          <span>{this.props.status}</span>
+        </div>
+      );
+    }
     return (
       <div>
         {this.state.editMode ? (
@@ -49,3 +57,9 @@ class ProfileStatus extends React.Component {
 }
 
 export default ProfileStatus;
+
+ProfileStatus.propTypes = {
+  isProfileOwner: PropTypes.bool.isRequired,
+  status: PropTypes.string,
+  uploadStatus: PropTypes.func,
+};

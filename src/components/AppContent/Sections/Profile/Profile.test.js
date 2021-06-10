@@ -3,18 +3,18 @@ import { render, screen } from "@testing-library/react";
 import Profile from "./Profile";
 
 const profile = {
-  aboutMe: "some info",
-  fullName: "my name",
+  aboutMe: "test...",
+  fullName: "test test",
   photos: {
     large: null,
     small: null,
   },
 };
 
-render(<Profile authorizedUserId="1" profile={profile} status="my status" />);
+render(<Profile authorizedUserId={1} profile={profile} status="status..." />);
 
 test("Renders test profile correctly", () => {
-  expect(screen.getByText("my name")).toBeInTheDocument();
-  expect(screen.getByText("my status")).toBeInTheDocument();
-  expect(screen.getByText("About me: some info")).toBeInTheDocument();
+  expect(screen.getByText("test test")).toBeInTheDocument();
+  expect(screen.getByText("status...")).toBeInTheDocument();
+  expect(screen.getByText("About me: test...")).toBeInTheDocument();
 });

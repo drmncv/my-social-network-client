@@ -33,5 +33,6 @@ export default class Login extends React.Component {
 
 Login.propTypes = {
   isAuth: PropTypes.bool.isRequired,
+  authorizedUserId: PropTypes.number.isRequired,
   login: PropTypes.func.isRequired,
 };

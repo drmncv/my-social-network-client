@@ -52,10 +52,10 @@ const Pagination = ({ count, pageSize, currentPage, getUsers }) => {
 };
 
 Pagination.propTypes = {
-  count: PropTypes.number,
-  pageSize: PropTypes.number,
-  currentPage: PropTypes.number,
-  getUsers: PropTypes.func,
+  count: PropTypes.number.isRequired,
+  pageSize: PropTypes.number.isRequired,
+  currentPage: PropTypes.number.isRequired,
+  getUsers: PropTypes.func.isRequired,
 };
 
 export default Pagination;

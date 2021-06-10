@@ -11,9 +11,9 @@ const PaginationItem = ({ pageNumber, isCurrent, getUsers }) => (
 );
 
 PaginationItem.propTypes = {
-  pageNumber: PropTypes.number,
-  isCurrent: PropTypes.bool,
-  getUsers: PropTypes.func,
+  pageNumber: PropTypes.number.isRequired,
+  isCurrent: PropTypes.bool.isRequired,
+  getUsers: PropTypes.func.isRequired,
 };
 
 export default PaginationItem;

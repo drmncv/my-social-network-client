@@ -38,7 +38,7 @@ export const getAuthorizedUserData = () => async (dispatch) => {
 export const login = (email, password, rememberMe) => async (dispatch) => {
   const response = await authAPI.login(email, password, rememberMe);
   if (response.resultCode === 0) {
-    dispatch(getAuthorizedUserData());
+    await dispatch(getAuthorizedUserData());
   } else {
     return response.messages[0];
   }

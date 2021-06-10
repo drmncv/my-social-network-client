@@ -1,6 +1,15 @@
-import auth, { clearAuthorizedUserData, setAuthorizedUserData } from "./auth";
+import configureStore from "redux-mock-store";
+import thunk from "redux-thunk";
+import auth, {
+  clearAuthorizedUserData,
+  getAuthorizedUserData,
+  login,
+  logout,
+  setAuthorizedUserData,
+} from "./auth";
 
 const userData = { id: 1, email: "test@test", login: "test" };
+const mockStore = configureStore([thunk]);
 
 const authorizedUserState = {
   isAuthorized: true,
@@ -12,6 +21,7 @@ const unauthorizedUserState = {
   userData: { id: null, email: null, login: null },
 };
 
+//reducers
 test("should handle SET_USER_DATA", () => {
   const action = setAuthorizedUserData(userData);
   expect(auth(unauthorizedUserState, action)).toEqual(authorizedUserState);
@@ -20,4 +30,34 @@ test("should handle SET_USER_DATA", () => {
 test("should handle CLEAR_USER_DATA", () => {
   const action = clearAuthorizedUserData();
   expect(auth(authorizedUserState, action)).toEqual(unauthorizedUserState);
+});
+
+//actions
+test("should set authorized user data if authorized", async () => {
+  sessionStorage.setItem("is-authenticated", "true");
+  const store = mockStore({});
+
+  await store.dispatch(getAuthorizedUserData());
+  const actions = store.getActions();
+  expect(actions[0]).toEqual(setAuthorizedUserData({ testUserData: "test" }));
+});
+
+test("should set authorized user data after login", async () => {
+  sessionStorage.setItem("is-authenticated", "false");
+  const store = mockStore({});
+
+  await store.dispatch(login("test@test", "123"));
+  const actions = store.getActions();
+  expect(actions[0]).toEqual(setAuthorizedUserData({ testUserData: "test" }));
+  expect(sessionStorage.getItem("is-authenticated")).toBe("true");
+});
+
+test("should clear authorized user data after logout", async () => {
+  sessionStorage.setItem("is-authenticated", "true");
+  const store = mockStore({});
+
+  await store.dispatch(logout());
+  const actions = store.getActions();
+  expect(actions[0]).toEqual(clearAuthorizedUserData());
+  expect(sessionStorage.getItem("is-authenticated")).toBe("false");
 });

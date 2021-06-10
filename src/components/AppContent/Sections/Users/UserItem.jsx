@@ -27,14 +27,14 @@ const UserItem = ({ id, name, photos, status, followed, toggleFollowed }) => {
 };
 
 UserItem.propTypes = {
-  name: PropTypes.string,
+  name: PropTypes.string.isRequired,
   photos: PropTypes.shape({
     small: PropTypes.string,
     large: PropTypes.string,
   }),
   status: PropTypes.string,
-  followed: PropTypes.bool,
-  toggleFollowed: PropTypes.func,
+  followed: PropTypes.bool.isRequired,
+  toggleFollowed: PropTypes.func.isRequired,
 };
 
 export default UserItem;

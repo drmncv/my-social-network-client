@@ -12,6 +12,7 @@ const Profile = ({
   uploadPhoto,
 }) => {
   const avatar = profile.photos.large ? profile.photos.large : defaultPhoto;
+  const isProfileOwner = profile.userId === authorizedUserId;
 
   return (
     <div className={styles.profile}>
@@ -23,7 +24,7 @@ const Profile = ({
             alt={profile.fullName}
           />
         </div>
-        {profile.userId === authorizedUserId && (
+        {isProfileOwner && (
           <div>
             <input
               type="file"
@@ -38,7 +39,11 @@ const Profile = ({
         <div className={styles.fullName}>
           <h2>{profile.fullName}</h2>
         </div>
-        <ProfileStatus status={status} uploadStatus={uploadStatus} />
+        <ProfileStatus
+          isProfileOwner={isProfileOwner}
+          status={status}
+          uploadStatus={uploadStatus}
+        />
         <div className="aboutMe">
           {profile.aboutMe && <p>About me: {profile.aboutMe}</p>}
         </div>
@@ -48,12 +53,17 @@ const Profile = ({
 };
 
 Profile.propTypes = {
+  authorizedUserId: PropTypes.number.isRequired,
   profile: PropTypes.shape({
     aboutMe: PropTypes.string,
     fullName: PropTypes.string,
     photos: PropTypes.object,
-  }),
+  }).isRequired,
   status: PropTypes.string,
+  getProfile: PropTypes.func,
+  getStatus: PropTypes.func,
+  uploadStatus: PropTypes.func,
+  uploadPhoto: PropTypes.func,
 };
 
 export default Profile;
