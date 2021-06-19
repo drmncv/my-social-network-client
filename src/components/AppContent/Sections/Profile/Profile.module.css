@@ -14,3 +14,15 @@
 .avatarImg {
   width: 150px;
 }
+
+.saveButton {
+  color: inherit;
+}
+
+.error {
+  color: red;
+}
+
+.contacts {
+  line-height: 5px;
+}

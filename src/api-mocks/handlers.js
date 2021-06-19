@@ -78,4 +78,9 @@ export const handlers = [
       ctx.json({ resultCode: 0, data: { photos: { large: "some URL" } } })
     );
   }),
+
+  // /profile PUT
+  rest.put(`${baseUrl}profile`, (req, res, ctx) => {
+    return res(ctx.json({ resultCode: 0 }));
+  }),
 ];

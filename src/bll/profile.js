@@ -78,6 +78,16 @@ export const uploadPhoto = (file) => async (dispatch) => {
   }
 };
 
+export const updateProfile = (profile) => async (dispatch, getState) => {
+  const response = await profileAPI.updateProfile(profile);
+  if (response.resultCode === 0) {
+    dispatch(getProfile(getState().profile.profileInfo.userId));
+  } else {
+    return response.messages;
+  }
+};
+
 //selectors
 export const selectProfileInfo = (state) => state.profile.profileInfo;
 export const selectStatus = (state) => state.profile.status;
+export const selectErrors = (state) => state.profile.errors;

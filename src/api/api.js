@@ -79,4 +79,13 @@ export const profileAPI = {
       body: data,
     }).then((response) => response.json());
   },
+
+  updateProfile(profile) {
+    return fetch(`${baseUrl}profile`, {
+      method: "PUT",
+      headers: { ...headers, "Content-Type": "application/json" },
+      credentials,
+      body: JSON.stringify(profile),
+    }).then((response) => response.json());
+  },
 };

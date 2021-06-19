@@ -2,10 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 
 class ProfileStatus extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = { status: this.props.status, editMode: false };
-  }
+  state = { status: this.props.status, editMode: false };
 
   activateEditMode = () => {
     this.setState({ editMode: true });

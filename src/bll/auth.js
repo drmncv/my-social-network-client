@@ -40,7 +40,7 @@ export const login = (email, password, rememberMe) => async (dispatch) => {
   if (response.resultCode === 0) {
     await dispatch(getAuthorizedUserData());
   } else {
-    return response.messages[0];
+    return response.messages;
   }
 };
 

@@ -21,7 +21,9 @@ const LoginForm = (props) => (
         Remember me
       </label>
     </div>
-    <div className={styles.error}>{props.error}</div>
+    {props.errors && props.errors.map((error) => (
+      <div className={styles.error}>{error}</div>
+    ))}
     <div>
       <button className={styles.submit}>Login</button>
     </div>

@@ -5,6 +5,7 @@ import {
   getStatus,
   uploadStatus,
   uploadPhoto,
+  updateProfile,
   selectProfileInfo,
   selectStatus,
 } from "../../../../bll/profile";
@@ -16,13 +17,13 @@ import { selectAuthorizedUserData } from "../../../../bll/auth";
 
 class ProfileContainer extends React.Component {
   componentDidMount() {
-    this.updateProfile();
+    this.changeProfile();
   }
   componentDidUpdate() {
-    this.updateProfile();
+    this.changeProfile();
   }
 
-  updateProfile() {
+  changeProfile() {
     const userId = this.props.match.params.userId;
     const profileUserId = this.props.profile ? this.props.profile.userId : null;
 
@@ -54,6 +55,7 @@ export default compose(
     getStatus,
     uploadStatus,
     uploadPhoto,
+    updateProfile,
   }),
   withRouter
 )(ProfileContainer);
