@@ -35,7 +35,7 @@ export default class Users extends React.Component {
 
 Users.propTypes = {
   users: PropTypes.array.isRequired,
-  count: PropTypes.number.isRequired,
+  count: PropTypes.number,
   pageSize: PropTypes.number.isRequired,
   currentPage: PropTypes.number.isRequired,
   getUsers: PropTypes.func.isRequired,

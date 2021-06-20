@@ -18,7 +18,8 @@ export default class Login extends React.Component {
     const messages = await this.props.login(
       formData.get("email"),
       formData.get("password"),
-      formData.get("rememberMe") ? true : false
+      formData.get("rememberMe") ? true : false,
+      formData.get("captcha")
     );
     this.setState({ preloader: false, errors: messages });
   }
@@ -27,7 +28,13 @@ export default class Login extends React.Component {
     if (this.props.isAuth)
       return <Redirect to={`/profile/${this.props.authorizedUserId}`} />;
     if (this.state.preloader) return <Preloader />;
-    return <LoginForm onSubmit={this.onSubmit} errors={this.state.errors} />;
+    return (
+      <LoginForm
+        captchaUrl={this.props.captchaUrl}
+        onSubmit={this.onSubmit}
+        errors={this.state.errors}
+      />
+    );
   }
 }
 
@@ -35,4 +42,5 @@ Login.propTypes = {
   isAuth: PropTypes.bool.isRequired,
   authorizedUserId: PropTypes.number,
   login: PropTypes.func.isRequired,
+  captchaUrl: PropTypes.string,
 };

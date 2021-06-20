@@ -6,6 +6,7 @@ import auth, {
   login,
   logout,
   setAuthorizedUserData,
+  setCaptchaUrl,
 } from "./auth";
 
 const userData = { id: 1, email: "test@test", login: "test" };
@@ -14,11 +15,13 @@ const mockStore = configureStore([thunk]);
 const authorizedUserState = {
   isAuthorized: true,
   userData,
+  captchaUrl: null,
 };
 
 const unauthorizedUserState = {
   isAuthorized: false,
   userData: { id: null, email: null, login: null },
+  captchaUrl: null,
 };
 
 //reducers
@@ -30,6 +33,11 @@ test("should handle SET_USER_DATA", () => {
 test("should handle CLEAR_USER_DATA", () => {
   const action = clearAuthorizedUserData();
   expect(auth(authorizedUserState, action)).toEqual(unauthorizedUserState);
+});
+
+test("should handle SET_CAPTCHA_URL", () => {
+  const action = setCaptchaUrl("test.url");
+  expect(auth(unauthorizedUserState, action).captchaUrl).toBe("test.url");
 });
 
 //actions

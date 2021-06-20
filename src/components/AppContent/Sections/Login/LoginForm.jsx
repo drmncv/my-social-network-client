@@ -6,7 +6,7 @@ const LoginForm = (props) => (
     <div>
       <label>
         Email:&nbsp;
-        <input name="email" />
+        <input type="email" name="email" />
       </label>
     </div>
     <div>
@@ -21,9 +21,21 @@ const LoginForm = (props) => (
         Remember me
       </label>
     </div>
-    {props.errors && props.errors.map((error) => (
-      <div className={styles.error}>{error}</div>
-    ))}
+    {props.captchaUrl && (
+      <div>
+        <img src={props.captchaUrl} alt="captcha" />
+        <label>
+          Captcha:&nbsp;
+          <input name="captcha" />
+        </label>
+      </div>
+    )}
+    {props.errors &&
+      props.errors.map((error, index) => (
+        <div className={styles.error} key={index}>
+          {error}
+        </div>
+      ))}
     <div>
       <button className={styles.submit}>Login</button>
     </div>
@@ -32,7 +44,8 @@ const LoginForm = (props) => (
 
 LoginForm.propTypes = {
   onSubmit: PropTypes.func.isRequired,
-  error: PropTypes.string,
+  captchaUrl: PropTypes.string,
+  errors: PropTypes.arrayOf(PropTypes.string),
 };
 
 export default LoginForm;

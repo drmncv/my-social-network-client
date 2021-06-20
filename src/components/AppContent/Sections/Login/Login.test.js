@@ -18,5 +18,5 @@ test("Collects login data from the form and passes it to login callback", () => 
   });
   fireEvent.click(screen.getByRole("button", { name: /login/i }));
 
-  expect(loginMock.mock.calls[0]).toEqual(["test@test", "test", true]);
+  expect(loginMock.mock.calls[0]).toEqual(["test@test", "test", true, null]);
 });

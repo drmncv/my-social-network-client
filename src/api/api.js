@@ -9,13 +9,19 @@ export const authAPI = {
     );
   },
 
-  login(email, password, rememberMe = false) {
+  login(email, password, rememberMe, captcha = "") {
     return fetch(`${baseUrl}auth/login`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       credentials,
-      body: JSON.stringify({ email, password, rememberMe }),
+      body: JSON.stringify({ email, password, rememberMe, captcha }),
     }).then((response) => response.json());
+  },
+
+  getCaptchaUrl() {
+    return fetch(`${baseUrl}security/get-captcha-url`, { credentials }).then(
+      (response) => response.json()
+    );
   },
 
   logout() {
